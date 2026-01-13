@@ -2,5 +2,5 @@
 Course: PRO192
 
 Members:
-- Bui Tan Phat
-- Huynh Anh Tuan
+- Bui Tan Phat QE200109
+- Huynh Anh Tuan QE200073
