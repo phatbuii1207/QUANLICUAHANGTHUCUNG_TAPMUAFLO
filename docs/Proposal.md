@@ -1,117 +1,190 @@
-# 🐾 Hệ thống Quản lý Thú cưng (Pet Management System)
-
-## 1. Quản lý Hồ sơ Thú cưng (Pet Profiles)
-Đây là **trái tim của hệ thống**, lưu trữ toàn bộ thông tin định danh của thú cưng.
-
-### Thông tin cơ bản
-- Tên thú cưng  
-- Giống (Breed)  
-- Loài (Chó, mèo, chim, v.v.)  
-- Màu lông  
-- Giới tính  
-- Ngày sinh  
-
-### Mã định danh
-- Mã số chip (Microchip ID)  
-- Mã QR trên vòng cổ  
-
-### Bộ sưu tập ảnh
-- Lưu giữ hình ảnh thú cưng qua các giai đoạn phát triển  
+# 🐾 HỆ THỐNG QUẢN LÝ CỬA HÀNG THÚ CƯNG
 
 ---
 
-## 2. Theo dõi Sức khỏe & Y tế (Medical Records)
-Giúp chủ nuôi theo dõi tình trạng thể chất và lịch sử điều trị của thú cưng.
+## 1. Lớp Thú Cưng (Pet)
 
-### Lịch tiêm phòng (Vaccination)
-- Quản lý các loại vaccine (Dại, 5 bệnh, 7 bệnh, v.v.)  
-- Tự động nhắc lịch tiêm nhắc lại  
+### Mô tả
+Lớp cơ sở lưu trữ thông tin về các cá thể động vật đang có mặt tại cửa hàng.
 
-### Sổ khám bệnh
-- Lưu lịch sử thăm khám  
-- Chẩn đoán của bác sĩ thú y  
-- Kết quả xét nghiệm  
+### Thuộc tính
+- `petID`: Mã thú cưng
+- `species`: Loài
+- `breed`: Giống
+- `age`: Tuổi
+- `gender`: Giới tính
+- `price`: Giá bán
+- `status`: Trạng thái (sẵn sàng / đã bán / đang điều trị)
 
-### Quản lý đơn thuốc
-- Theo dõi liều lượng  
-- Giờ uống thuốc  
-- Cảnh báo khi sắp hết thuốc  
-
-### Chỉ số cơ thể
-- Biểu đồ theo dõi cân nặng  
-- Chế độ dinh dưỡng  
-- Mức độ vận động hàng ngày  
+### Phương thức
+- `updateHealthStatus()`: Cập nhật tình trạng sức khỏe
+- `getPetDetails()`: Lấy thông tin chi tiết thú cưng
 
 ---
 
-## 3. Lịch trình & Nhắc nhở (Scheduling & Reminders)
-Đảm bảo thú cưng được chăm sóc đúng giờ và đầy đủ.
+## 2. Lớp Sản Phẩm (Product)
 
-### Nhắc lịch hàng ngày
-- Giờ ăn  
-- Giờ đi vệ sinh  
-- Giờ đi dạo  
+### Mô tả
+Quản lý các mặt hàng bán lẻ như thức ăn, phụ kiện, đồ chơi.
 
-### Lịch làm đẹp (Grooming)
-- Nhắc lịch cắt lông  
-- Tắm rửa  
-- Cắt móng  
+### Thuộc tính
+- `productID`: Mã sản phẩm
+- `name`: Tên sản phẩm
+- `category`: Danh mục
+- `price`: Giá bán
+- `stockQuantity`: Số lượng tồn kho
+- `expiryDate`: Ngày hết hạn
 
-### Đặt lịch hẹn
-- Kết nối trực tiếp với:
-  - Phòng khám thú y  
-  - Spa thú cưng  
-- Đặt lịch trực tuyến  
-
----
-
-## 4. Quản lý Chi phí (Expense Tracking)
-Giúp chủ nuôi kiểm soát chi tiêu cho thú cưng.
-
-### Phân loại chi tiêu
-- Thức ăn  
-- Đồ chơi  
-- Y tế  
-- Bảo hiểm  
-
-### Báo cáo tài chính
-- Thống kê theo:
-  - Tháng  
-  - Quý  
-  - Năm  
-- Hiển thị dưới dạng biểu đồ  
+### Phương thức
+- `updateStock()`: Cập nhật tồn kho
+- `checkExpiry()`: Kiểm tra hạn sử dụng
+- `applyDiscount()`: Áp dụng giảm giá
 
 ---
 
-## 5. Tìm kiếm & Kết nối (Community & Safety)
-Tăng cường kết nối cộng đồng và đảm bảo an toàn cho thú cưng.
+## 3. Lớp Khách Hàng (Customer)
 
-### Tìm kiếm thú cưng lạc
-- Chế độ **"Báo mất"**  
-- Gửi thông báo đến người dùng trong khu vực lân cận  
+### Mô tả
+Lưu trữ thông tin định danh và hành vi mua sắm của khách hàng.
 
-### Mạng xã hội thú cưng
-- Chia sẻ khoảnh khắc đáng yêu  
-- Kết bạn cho thú cưng  
-- Trao đổi kinh nghiệm chăm sóc  
+### Thuộc tính
+- `customerID`: Mã khách hàng
+- `fullName`: Họ và tên
+- `phoneNumber`: Số điện thoại
+- `email`: Email
+- `loyaltyPoints`: Điểm tích lũy
 
-### Bản đồ tiện ích
-- Tìm kiếm nhanh:
-  - Cửa hàng thức ăn  
-  - Phòng khám thú y  
-  - Công viên thú cưng gần nhất  
+### Phương thức
+- `viewPurchaseHistory()`: Xem lịch sử mua hàng
+- `addLoyaltyPoints()`: Cộng điểm tích lũy
 
 ---
 
-## 6. Tính năng cho Quản lý (Dành cho Shop / Clinic)
+## 4. Lớp Nhân Viên (Employee)
 
-### Quản lý lưu chuồng (Boarding)
-- Theo dõi danh sách thú cưng đang gửi nội trú  
-- Quản lý số lượng lồng trống  
+### Mô tả
+Quản lý thông tin nhân sự và phân quyền trong hệ thống.
 
-### Quản lý kho
-- Theo dõi tồn kho:
-  - Thức ăn  
-  - Cát vệ sinh  
-  - Thuốc thú y  
+### Thuộc tính
+- `employeeID`: Mã nhân viên
+- `name`: Tên nhân viên
+- `role`: Vai trò (bán hàng / kỹ thuật / quản lý)
+- `shift`: Ca làm việc
+- `salary`: Lương
 
+### Phương thức
+- `checkIn()`: Chấm công vào ca
+- `checkOut()`: Chấm công ra ca
+- `processOrder()`: Xử lý đơn hàng
+
+---
+
+## 5. Lớp Dịch Vụ (Service)
+
+### Mô tả
+Định nghĩa các dịch vụ chăm sóc thú cưng có thu phí.
+
+### Thuộc tính
+- `serviceID`: Mã dịch vụ
+- `serviceName`: Tên dịch vụ
+- `description`: Mô tả
+- `duration`: Thời gian thực hiện
+- `cost`: Chi phí
+
+### Phương thức
+- `updatePrice()`: Cập nhật giá dịch vụ
+- `getServiceInfo()`: Lấy thông tin dịch vụ
+
+---
+
+## 6. Lớp Đặt Lịch (Appointment)
+
+### Mô tả
+Quản lý lịch hẹn cho các dịch vụ spa, grooming hoặc thăm khám.
+
+### Thuộc tính
+- `appointmentID`: Mã lịch hẹn
+- `customerID`: Mã khách hàng
+- `petID`: Mã thú cưng
+- `serviceID`: Mã dịch vụ
+- `dateTime`: Thời gian hẹn
+- `status`: Trạng thái (đã đặt / hoàn thành / hủy)
+
+### Phương thức
+- `reschedule()`: Đổi lịch hẹn
+- `confirmAppointment()`: Xác nhận lịch hẹn
+
+---
+
+## 7. Lớp Hóa Đơn (Invoice)
+
+### Mô tả
+Ghi lại chi tiết giao dịch tài chính giữa cửa hàng và khách hàng.
+
+### Thuộc tính
+- `invoiceID`: Mã hóa đơn
+- `customerID`: Mã khách hàng
+- `itemList`: Danh sách sản phẩm/dịch vụ
+- `totalAmount`: Tổng tiền
+- `paymentMethod`: Phương thức thanh toán
+- `createdAt`: Ngày tạo
+
+### Phương thức
+- `calculateTax()`: Tính thuế
+- `generateReceipt()`: Tạo hóa đơn
+
+---
+
+## 8. Lớp Lưu Chuồng (Boarding)
+
+### Mô tả
+Quản lý dịch vụ lưu trú cho thú cưng khi chủ vắng nhà.
+
+### Thuộc tính
+- `boardingID`: Mã lưu chuồng
+- `petID`: Mã thú cưng
+- `cageNumber`: Số lồng
+- `checkInDate`: Ngày nhận
+- `checkOutDate`: Ngày trả
+- `dailyRoutine`: Chế độ sinh hoạt hằng ngày
+
+### Phương thức
+- `assignCage()`: Phân lồng
+- `trackFeeding()`: Theo dõi việc cho ăn
+
+---
+
+## 9. Lớp Nhà Cung Cấp (Supplier)
+
+### Mô tả
+Quản lý thông tin các đơn vị cung cấp hàng hóa hoặc con giống.
+
+### Thuộc tính
+- `supplierID`: Mã nhà cung cấp
+- `companyName`: Tên công ty
+- `contactPerson`: Người liên hệ
+- `supplyCategory`: Loại hàng cung cấp
+- `contractStatus`: Trạng thái hợp đồng
+
+### Phương thức
+- `createPurchaseOrder()`: Tạo đơn nhập hàng
+- `evaluateSupplier()`: Đánh giá nhà cung cấp
+
+---
+
+## 10. Lớp Báo Cáo (Report)
+
+### Mô tả
+Tổng hợp dữ liệu để phân tích hiệu quả kinh doanh.
+
+### Thuộc tính
+- `reportID`: Mã báo cáo
+- `reportType`: Loại báo cáo (doanh thu / tồn kho / hiệu suất)
+- `startDate`: Ngày bắt đầu
+- `endDate`: Ngày kết thúc
+
+### Phương thức
+- `generateChart()`: Tạo biểu đồ
+- `exportPDF()`: Xuất file PDF
+
+---
