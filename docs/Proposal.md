@@ -1,154 +1,156 @@
 # Thiết kế hệ thống quản lý cửa hàng thú cưng (Pet Store Management)
 
-## 1. Class Pet (Lớp cha – lớp cơ sở)
+2️⃣ Mục tiêu
 
-### Tác dụng
-- Đại diện cho một thú cưng chung trong cửa hàng.
-- Là lớp nền (base class) cho các loại thú cưng cụ thể như `Dog`, `Cat`.
+Áp dụng 4 tính chất của OOP: Đóng gói, Kế thừa, Đa hình, Trừu tượng.
 
-### Các thành phần chính
+Rèn luyện kỹ năng thiết kế class và tương tác giữa các đối tượng.
 
-#### Thuộc tính
-- `ID`: mã thú cưng  
-- `name`: tên thú cưng  
-- `age`: tuổi  
-- `price`: giá bán  
-- `type`: loại thú cưng (Dog, Cat…)
+Xây dựng chương trình có menu và kiểm tra dữ liệu đầu vào (validation).
 
-#### Phương thức
-- **Nhập thông tin**: nhập dữ liệu chung cho mọi thú cưng.
-- **Hiển thị thông tin**: in thông tin cơ bản của thú cưng.
-- **Getter**: cho phép các lớp khác truy cập `id`, `name`, `price`.
+Quản lý dữ liệu bằng ArrayList.
 
-### 👉 Ý nghĩa OOP
-- Dùng để kế thừa, giúp tránh lặp code.
-- Tạo tính đa hình khi quản lý danh sách thú cưng chung.
+3️⃣ Chức năng chính của hệ thống
 
----
+Thêm thú mới (Dog, Cat).
 
-## 2. Class Dog (Lớp con của Pet)
+Xóa thú khỏi hệ thống.
 
-### Tác dụng
-- Đại diện cho chó – một loại thú cưng cụ thể.
+Tìm thú theo tên.
 
-### Các thành phần chính
+Hiển thị toàn bộ thú.
 
-#### Thuộc tính riêng
-- `breed`: giống chó.
-- `isTrained`: tình trạng đã được huấn luyện hay chưa.
+Tạo hóa đơn cho khách hàng.
 
-#### Phương thức
-- **Nhập thông tin**: kế thừa từ `Pet`, bổ sung thông tin riêng của `Dog`.
-- **Hiển thị thông tin**: hiển thị thêm thông tin đặc trưng của chó.
+Tính tổng tiền hóa đơn.
 
-### 👉 Ý nghĩa
-- Thể hiện kế thừa và mở rộng.
-- Giữ đúng đặc điểm riêng của `Dog` nhưng vẫn dùng chung cấu trúc `Pet`.
+Thoát chương trình an toàn.
 
----
+4️⃣ Thiết kế các lớp (Class Design)
+🔹 1. Lớp Pet (Lớp cha)
 
-## 3. Class Cat (Lớp con của Pet)
+Vai trò: Đại diện cho một con thú chung.
 
-### Tác dụng
-- Đại diện cho mèo trong cửa hàng.
+Thuộc tính:
 
-### Các thành phần chính
+id, name, age, price, type
 
-#### Thuộc tính riêng
-- `furColor`: màu lông.
-- `isIndoor`: mèo nuôi trong nhà hay ngoài trời.
+Phương thức:
 
-#### Phương thức
-- **Nhập thông tin**: nhập thông tin riêng cho mèo.
-- **Hiển thị thông tin**: hiển thị thông tin đặc trưng của mèo.
+input(): Nhập thông tin thú.
 
-### 👉 Ý nghĩa
-- Tương tự `Dog` nhưng cho loại thú cưng khác.
-- Thể hiện rõ đa hình khi hiển thị hoặc lưu trữ chung với `Dog`.
+display(): Hiển thị thông tin thú.
 
----
+getId(), getPrice(): Truy cập dữ liệu an toàn.
 
-## 4. Class Customer (Khách hàng)
+Áp dụng OOP:
+Đóng gói, Trừu tượng, Lớp cha cho kế thừa.
 
-### Tác dụng
-- Lưu trữ thông tin khách hàng mua thú cưng.
+🔹 2. Lớp Dog (Lớp con)
 
-### Các thành phần chính
+Vai trò: Đại diện cho chó, kế thừa từ Pet.
 
-#### Thuộc tính
-- `customerId`: mã khách hàng.
-- `customerName`: tên khách hàng.
-- `phoneNumber`: số điện thoại.
+Thuộc tính:
 
-#### Phương thức
-- **Nhập thông tin khách hàng**.
-- **Hiển thị thông tin khách hàng**.
-- **Lấy tên khách hàng** khi cần.
+breed (giống chó)
 
-### 👉 Ý nghĩa
-- Tách riêng đối tượng khách hàng khỏi các đối tượng khác.
-- Tuân thủ nguyên tắc **Single Responsibility**.
+Phương thức:
 
----
+Ghi đè input() và display().
 
-## 5. Class Order (Đơn hàng)
+Áp dụng OOP:
+Kế thừa, Đa hình.
 
-### Tác dụng
-- Quản lý một lần mua hàng của khách.
+🔹 3. Lớp Cat (Lớp con)
 
-### Các thành phần chính
+Vai trò: Đại diện cho mèo, kế thừa từ Pet.
 
-#### Thuộc tính
-- `orderId`: mã đơn hàng.
-- `customer`: khách hàng thực hiện đơn hàng.
-- `petList`: danh sách thú cưng được mua.
-- `totalPrice`: tổng tiền.
+Thuộc tính:
 
-#### Phương thức
-- **Thêm thú cưng vào đơn hàng**.
-- **Tính tổng tiền**.
-- **Hiển thị thông tin đơn hàng**.
+color (màu lông)
 
-### 👉 Ý nghĩa
-- Kết nối `Customer` ↔ `Pet`.
-- Thể hiện quan hệ **has-a** (Order có Customer, có nhiều Pet).
+Phương thức:
 
----
+Ghi đè input() và display().
 
-## 6. Class PetStoreManagement (Lớp quản lý)
+Áp dụng OOP:
+Kế thừa, Đa hình.
 
-### Tác dụng
-- Là trung tâm điều khiển toàn bộ hệ thống cửa hàng thú cưng.
+🔹 4. Lớp Customer
 
-### Các thành phần chính
+Vai trò: Lưu thông tin khách hàng.
 
-#### Thuộc tính
-- Danh sách thú cưng trong cửa hàng.
-- Danh sách đơn hàng đã tạo.
+Thuộc tính:
 
-#### Chức năng
-- Thêm thú cưng (`Dog` hoặc `Cat`).
-- Xóa thú cưng.
-- Tìm thú cưng theo tên.
-- Hiển thị toàn bộ thú cưng.
-- Tạo đơn hàng và quản lý quá trình mua.
+id, name, phone
 
-### 👉 Ý nghĩa
-- Đóng vai trò **Controller** trong mô hình chương trình đơn giản.
-- Quản lý luồng nghiệp vụ chính của hệ thống.
+Phương thức:
 
----
+input(), display()
 
-## 7. Class Main (Điểm bắt đầu chương trình)
+Áp dụng OOP:
+Đóng gói, Trừu tượng.
 
-### Tác dụng
-- Chạy chương trình.
-- Hiển thị menu và nhận lựa chọn từ người dùng.
+🔹 5. Lớp Order
 
-### Vai trò
-- Gọi các chức năng tương ứng trong `PetStoreManagement`.
-- Điều hướng luồng hoạt động của hệ thống.
+Vai trò: Đại diện cho một hóa đơn mua hàng.
 
-### 👉 Ý nghĩa
-- Không chứa logic nghiệp vụ.
-- Chỉ làm nhiệm vụ khởi động và điều hướng chương trình.
+Thuộc tính:
+
+orderId, customer, petList, totalAmount
+
+Phương thức:
+
+addPet(Pet p): Thêm thú vào hóa đơn.
+
+calculateTotal(): Tính tổng tiền.
+
+display(): Hiển thị hóa đơn.
+
+Áp dụng OOP:
+Đa hình (danh sách Pet), Đóng gói.
+
+🔹 6. Lớp PetStoreManagement
+
+Vai trò: Quản lý toàn bộ hệ thống.
+
+Thuộc tính:
+
+ArrayList<Pet> pets
+
+ArrayList<Order> orders
+
+Scanner sc
+
+Phương thức:
+
+addPet()
+
+removePet()
+
+searchPetByName()
+
+displayAllPets()
+
+createOrder()
+
+Áp dụng OOP:
+Trừu tượng, Đa hình.
+
+🔹 7. Lớp Main
+
+Vai trò: Điểm bắt đầu chương trình và điều khiển menu.
+
+Phương thức:
+
+main(): Hiển thị menu, nhận lựa chọn và gọi các chức năng từ PetStoreManagement.
+
+Áp dụng OOP:
+Trừu tượng.
+
+5️⃣ Áp dụng 4 tính chất OOP
+Tính chất	Thể hiện trong bài
+Đóng gói	Thuộc tính private/protected, truy cập qua method
+Kế thừa	Dog và Cat kế thừa từ Pet
+Đa hình	Pet p = new Dog(); p.display();
+Trừu tượng	Người dùng chỉ gọi menu, không biết logic bên trong
