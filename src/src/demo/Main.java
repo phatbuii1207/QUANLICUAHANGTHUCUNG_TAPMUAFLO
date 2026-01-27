@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
         PetStoreManagement store = new PetStoreManagement();
         Scanner sc = new Scanner(System.in);
+        int choice;
 
         while (true) {
             System.out.println("\n===== PET STORE MANAGEMENT =====");
@@ -21,7 +22,16 @@ public class Main {
             System.out.println("6. Exit");
             System.out.print("Choose: ");
 
-            int choice = Integer.parseInt(sc.nextLine());
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+                if (choice < 1 || choice > 6) {
+                    System.out.println("Please choose from 1 to 6!");
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number!");
+                continue;
+            }
 
             switch (choice) {
                 case 1:
@@ -42,8 +52,6 @@ public class Main {
                 case 6:
                     System.out.println("Goodbye!");
                     return;
-                default:
-                    System.out.println("Invalid choice!");
             }
         }
     }
