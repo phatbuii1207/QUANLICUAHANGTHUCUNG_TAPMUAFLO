@@ -1,34 +1,19 @@
+
 package petmn;
 
-import java.util.Scanner;
 
-/**
- *
- * @author Admin
- */
-public class Dog extends Pet {
-
+public class Dog extends Pet{
     private String breed;
     private boolean isTrained;
 
-    public Dog() {
-        super();
-    }
-
-    @Override
-    public void input() {
-        super.input();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Breed ");
-        this.breed = sc.nextLine();
-        System.out.println("Is Trained? (true/false): ");
-        this.isTrained = sc.nextBoolean();
+    public Dog(String id, String name, int age, double price, boolean isTrained, String breed) {
+        super(id, name, age, "Dog", price);
+        this.isTrained = isTrained;
+        this.breed = breed;
     }
 
     @Override
     public void display() {
-        super.display();
-        System.out.println("Breed: " + this.breed + "   Is Trained? " + this.isTrained);
+        System.out.println("Dog | Id: " + getId() +", Name: " + getName() +", Age: " + getAge() +", Price: " + getPrice() +", IsTrained: " + isTrained +", Breed: " + breed);
     }
-
 }
