@@ -1,19 +1,37 @@
-
 package petmn;
 
+import java.util.Scanner;
 
-public class Dog extends Pet{
-    private String breed;
-    private boolean isTrained;
+/**
+ * * * @author Admin
+ */
+public class Cat extends Pet {
 
-    public Dog(String id, String name, int age, double price, boolean isTrained, String breed) {
-        super(id, name, age, "Dog", price);
-        this.isTrained = isTrained;
-        this.breed = breed;
+    private String furColor;
+    private boolean isIndoor;
+
+    public Cat() {
+        super();
+    }
+    public Cat(String id, String name, int age, double price, boolean isIndoor, String furColor) {
+        super(id, name, age, price, "Cat");
+        this.isIndoor = isIndoor;
+        this.furColor = furColor;
+    }
+    
+    @Override
+    public void input() {
+        super.input();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("FurColor: ");
+        this.furColor = sc.nextLine();
+        System.out.println("Is Indoor? (true/false): ");
+        this.isIndoor = sc.nextBoolean();
     }
 
     @Override
     public void display() {
-        System.out.println("Dog | Id: " + getId() +", Name: " + getName() +", Age: " + getAge() +", Price: " + getPrice() +", IsTrained: " + isTrained +", Breed: " + breed);
+        super.display();
+        System.out.println("FurColor: " + this.furColor + " Is Indoor: " + this.isIndoor);
     }
 }
