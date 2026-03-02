@@ -5,33 +5,33 @@ import java.util.Scanner;
 /**
  * * * @author Admin
  */
-public class Cat extends Pet {
+public class Dog extends Pet {
 
-    private String furColor;
-    private boolean isIndoor;
+    private String breed;
+    private boolean isTrained;
 
-    public Cat() {
+    public Dog() {
         super();
     }
-    public Cat(String id, String name, int age, double price, boolean isIndoor, String furColor) {
-        super(id, name, age, price, "Cat");
-        this.isIndoor = isIndoor;
-        this.furColor = furColor;
+    public Dog(String id, String name, int age, double price, boolean isTrained, String breed) {
+        super(id, name, age, price, "Dog");
+        this.isTrained = isTrained;
+        this.breed = breed;
     }
-    
+
     @Override
     public void input() {
         super.input();
         Scanner sc = new Scanner(System.in);
-        System.out.println("FurColor: ");
-        this.furColor = sc.nextLine();
-        System.out.println("Is Indoor? (true/false): ");
-        this.isIndoor = sc.nextBoolean();
+        System.out.println("Breed ");
+        this.breed = sc.nextLine();
+        System.out.println("Is Trained? (true/false): ");
+        this.isTrained = sc.nextBoolean();
     }
 
     @Override
     public void display() {
         super.display();
-        System.out.println("FurColor: " + this.furColor + " Is Indoor: " + this.isIndoor);
+        System.out.println("Breed: " + this.breed + " Is Trained? " + this.isTrained);
     }
 }
