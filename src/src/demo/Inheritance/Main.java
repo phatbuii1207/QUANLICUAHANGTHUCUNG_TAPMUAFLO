@@ -1,16 +1,27 @@
-/* * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template */ package petmn;
 
+package petmn;
 import java.util.*;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
-    /**
-     * * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+      public static void saveToFile(ArrayList<Pet> pets) {
+        try (PrintWriter pw = new PrintWriter("pets.txt")) {
+            for (Pet p : pets) {
+                if (p instanceof Dog ) {
+                    Dog d = (Dog) p;
+                    pw.println("Dog," + d.getId() + "," + d.getName() + "," +d.getAge() + "," + d.getPrice() + "," + d.isIsTrained() + "," + d.getBreed());
+                } else if (p instanceof Cat ) {
+                    Cat c = (Cat) p;
+                    pw.println("Cat," + c.getId() + "," + c.getName() + "," +c.getAge() + "," + c.getPrice() + "," +c.isIsIndoor() + "," + c.getFurColor());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error saving file!");
+        }
+    }
+        public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int enter = 0;
         int enter1 = 0;
@@ -19,7 +30,7 @@ public class Main {
         ArrayList<Cat> cats = new ArrayList<>();
 
         try {
-            File file = new File("data/pets.txt");
+            File file = new File("pets.txt");
             if (file.exists()) {
                 Scanner fSc = new Scanner(file);
 
@@ -64,7 +75,7 @@ public class Main {
             System.out.println("3. Search Pets");
             System.out.println("4. Close");
             if (sc.hasNextInt()) {
-                enter = sc.nextInt();
+                enter = Integer.parseInt(sc.nextLine());
             } else {
                 System.out.println("Invalid selection, please enter again!");
                 sc.next();
@@ -72,12 +83,12 @@ public class Main {
             }
             switch (enter) {
                 case 1:
-                    System.out.println("which species you want to add?");
+                    System.out.println("Which species you want to add?");
                     System.out.println("1. Dog");
                     System.out.println("2. Cat");
                     System.out.println("3. Close");
                     if (sc.hasNextInt()) {
-                        enter1 = sc.nextInt();
+                        enter1 = Integer.parseInt(sc.nextLine());
                     } else {
                         System.out.println("Invalid selection, please enter again!");
                         sc.next();
@@ -85,13 +96,13 @@ public class Main {
                     }
                     if (enter1 == 1) {
                         Dog newDog = new Dog();
-                        newDog.input();
+                        newDog.input(sc);
                         dogs.add(newDog);
                         pets.add(newDog);
                         newDog.display();
                     } else if (enter1 == 2) {
                         Cat newCat = new Cat();
-                        newCat.input();
+                        newCat.input(sc);
                         cats.add(newCat);
                         pets.add(newCat);
                         newCat.display();
@@ -124,6 +135,10 @@ public class Main {
                     if (!found) {
                         System.out.println("Pet not found!");
                     }
+                    break;
+                case 4:
+                    saveToFile(pets);
+                    System.out.println("Goodbye!");
                     break;
                 default:
                     System.out.println("Invalid selection, please enter again!");
