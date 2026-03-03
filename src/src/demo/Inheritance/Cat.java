@@ -1,17 +1,14 @@
-package petmn;
 
+package petmn;
 import java.util.Scanner;
 
-/**
- * * * @author Admin
- */
-public class Cat extends Pet {
-
-    private String furColor;
+public class Cat extends Pet{
+     private String furColor;
     private boolean isIndoor;
 
     public Cat() {
         super();
+        setType("Cat");
     }
     public Cat(String id, String name, int age, double price, boolean isIndoor, String furColor) {
         super(id, name, age, price, "Cat");
@@ -20,13 +17,12 @@ public class Cat extends Pet {
     }
     
     @Override
-    public void input() {
-        super.input();
-        Scanner sc = new Scanner(System.in);
+    public void input(Scanner sc) {
+        super.input(sc);
         System.out.println("FurColor: ");
         this.furColor = sc.nextLine();
         System.out.println("Is Indoor? (true/false): ");
-        this.isIndoor = sc.nextBoolean();
+        this.isIndoor = Boolean.parseBoolean(sc.nextLine());
     }
 
     @Override
@@ -34,4 +30,13 @@ public class Cat extends Pet {
         super.display();
         System.out.println("FurColor: " + this.furColor + " Is Indoor: " + this.isIndoor);
     }
+
+    public String getFurColor() {
+        return furColor;
+    }
+
+    public boolean isIsIndoor() {
+        return isIndoor;
+    }
+    
 }
