@@ -1,158 +1,123 @@
-PROJECT PROPOSAL
+📄 PROPOSAL – PET STORE MANAGEMENT SYSTEM
+📄 ĐỀ XUẤT – HỆ THỐNG QUẢN LÝ CỬA HÀNG THÚ CƯNG
+1. Introduction / Giới thiệu
+
+EN:
+The Pet Store Management System is a Java console application designed to manage pet information in a store. It allows users to perform basic operations such as adding, displaying, searching, and saving pet data.
+
+VI:
+Hệ thống quản lý cửa hàng thú cưng là một ứng dụng Java chạy trên console, dùng để quản lý thông tin thú cưng trong cửa hàng. Hệ thống cho phép người dùng thêm, hiển thị, tìm kiếm và lưu dữ liệu thú cưng.
+
+2. Objectives / Mục tiêu
+
+EN:
+
+Manage pet information effectively
+Apply Object-Oriented Programming (OOP) concepts
+Practice file handling in Java
+
+VI:
 
-Project Title: Pet Store Management System
+Quản lý thông tin thú cưng hiệu quả
+Áp dụng các nguyên lý lập trình hướng đối tượng (OOP)
+Thực hành đọc/ghi file trong Java
+3. System Features / Chức năng hệ thống
 
-2️⃣ Objectives (Mục tiêu)
+EN:
 
-Apply OOP concepts: Encapsulation, Inheritance, Polymorphism, and Abstraction.
+Add new pets (Dog or Cat)
+Display all pets
+Search pets by ID
+Save and load data from file
 
-Practice class design and object interaction.
+VI:
 
-Build a menu-driven program with validation and user interaction.
+Thêm thú cưng mới (Chó hoặc Mèo)
+Hiển thị danh sách thú cưng
+Tìm kiếm theo ID
+Lưu và đọc dữ liệu từ file
+4. System Design / Thiết kế hệ thống
+4.1 Class Structure / Cấu trúc lớp
 
-Manage data using collections (ArrayList).
+EN:
 
-3️⃣ System Features (Chức năng hệ thống)
+Pet (Abstract Class)
+Stores common attributes and defines shared behavior.
+Dog (Subclass)
+Extends Pet and adds dog-specific properties.
+Cat (Subclass)
+Extends Pet and adds cat-specific properties.
+ISellable (Interface)
+Defines method for discount calculation.
+Main Class
+Handles program execution and user interaction.
 
-Add new pets (Dog, Cat).
+VI:
 
-Remove pets.
+Pet (Lớp trừu tượng)
+Lưu các thuộc tính chung và định nghĩa hành vi chung.
+Dog (Lớp con)
+Kế thừa từ Pet và bổ sung thuộc tính riêng của chó.
+Cat (Lớp con)
+Kế thừa từ Pet và bổ sung thuộc tính riêng của mèo.
+ISellable (Interface)
+Định nghĩa phương thức tính giá giảm.
+Main (Lớp chính)
+Điều khiển chương trình và tương tác với người dùng.
+4.2 OOP Concepts / Các nguyên lý OOP
 
-Search pets by name.
+EN:
 
-Display all pets.
+Encapsulation: using private fields and getters
+Inheritance: Dog and Cat extend Pet
+Polymorphism: using ArrayList<Pet>
+Abstraction: abstract class and method
+Interface: ISellable implementation
 
-Create customer orders.
+VI:
 
-Calculate and display order total.
+Đóng gói: sử dụng biến private và getter
+Kế thừa: Dog và Cat kế thừa Pet
+Đa hình: sử dụng ArrayList<Pet>
+Trừu tượng: lớp và phương thức abstract
+Interface: triển khai ISellable
+5. Program Flow / Luồng chương trình
 
-Exit the program safely.
+EN:
 
-4️⃣ Class Design (Thiết kế các class)
-🔹 1. Class Pet (Base Class)
+Start program
+Load data from file (if exists)
+Display menu
+Execute user choice
+Save data and exit
 
-Role: Represents a general pet.
+VI:
 
-Attributes:
+Khởi động chương trình
+Đọc dữ liệu từ file (nếu có)
+Hiển thị menu
+Thực hiện lựa chọn của người dùng
+Lưu dữ liệu và thoát
+6. File Structure / Cấu trúc file
 
-id, name, age, price, type
+EN:
+Data is stored in a text file pets.txt with format:
 
-Methods:
+id,name,age,price,type,extra,flag
 
-input(): Input pet information.
+VI:
+Dữ liệu được lưu trong file pets.txt với định dạng:
 
-display(): Display pet information.
+id,name,age,price,type,extra,flag
 
-getId(), getPrice(): Access data safely.
+Example / Ví dụ:
 
-OOP:
-Encapsulation, Abstraction, Parent class for inheritance.
+D01,Buddy,3,150.0,Dog,Husky,true
+C01,Mimi,2,120.0,Cat,White,true
+7. Conclusion / Kết luận
 
-🔹 2. Class Dog (Child Class)
+EN:
+This project demonstrates the application of core OOP principles and file handling in Java, providing a simple yet effective management system.
 
-Role: Represents a dog, extends Pet.
-
-Attributes:
-
-breed
-
-Methods:
-
-Override input() and display().
-
-OOP:
-Inheritance, Polymorphism.
-
-🔹 3. Class Cat (Child Class)
-
-Role: Represents a cat, extends Pet.
-
-Attributes:
-
-color
-
-Methods:
-
-Override input() and display().
-
-OOP:
-Inheritance, Polymorphism.
-
-🔹 4. Class Customer
-
-Role: Stores customer information.
-
-Attributes:
-
-id, name, phone
-
-Methods:
-
-input(), display()
-
-OOP:
-Encapsulation, Abstraction.
-
-🔹 5. Class Order
-
-Role: Represents a customer order.
-
-Attributes:
-
-orderId, customer, petList, totalAmount
-
-Methods:
-
-addPet(Pet p)
-
-calculateTotal()
-
-display()
-
-OOP:
-Polymorphism (Pet list), Encapsulation.
-
-🔹 6. Class PetStoreManagement
-
-Role: Manages pets and orders.
-
-Attributes:
-
-ArrayList<Pet> pets
-
-ArrayList<Order> orders
-
-Scanner sc
-
-Methods:
-
-addPet()
-
-removePet()
-
-searchPetByName()
-
-displayAllPets()
-
-createOrder()
-
-OOP:
-Abstraction (central control), Polymorphism.
-
-🔹 7. Class Main
-
-Role: Entry point and menu controller.
-
-Methods:
-
-main(): Displays menu, handles user input, and calls functions from PetStoreManagement.
-
-OOP:
-Abstraction (user interacts only with menu).
-
-5️⃣ OOP Principles Applied
-Principle	How It Is Applied
-Encapsulation	Private/protected attributes, accessed via methods
-Inheritance	Dog and Cat extend Pet
-Polymorphism	Pet p = new Dog(); p.display();
-Abstraction	Users interact through menu without knowing internal logic
+VI:
+Dự án thể hiện việc áp dụng các nguyên lý OOP và xử lý file trong Java, cung cấp một hệ thống quản lý đơn giản nhưng hiệu quả.
