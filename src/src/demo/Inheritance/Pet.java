@@ -1,9 +1,11 @@
 
 package petmn;
+
 import java.util.Scanner;
 
-public class Pet {
-    
+
+public abstract class Pet implements ISellable{
+
     private String id;
     private String name;
     private int age;
@@ -22,7 +24,7 @@ public class Pet {
     }
 
     public void input(Scanner sc) {
-        
+
         System.out.print("ID: ");
         this.id = sc.nextLine();
         System.out.print("Name: ");
@@ -31,10 +33,6 @@ public class Pet {
         this.age = Integer.parseInt(sc.nextLine());
         System.out.print("Price: ");
         this.price = Double.parseDouble(sc.nextLine());
-    }
-
-    public void display() {
-        System.out.println("ID: " + this.id + " Name: " + this.name + " Age: " + this.age + " Price: " + this.price + " Type: " + this.type);
     }
 
     public String getId() {
@@ -60,6 +58,13 @@ public class Pet {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return this.id + "," + this.name + "," + this.age + "," + this.price + "," + this.type;
+    }
+
+    public abstract void makeSound();
 
     
 }
