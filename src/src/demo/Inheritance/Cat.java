@@ -1,21 +1,25 @@
 
 package petmn;
+
 import java.util.Scanner;
 
-public class Cat extends Pet{
-     private String furColor;
+
+public class Cat extends Pet implements ISellable{
+
+    private String furColor;
     private boolean isIndoor;
 
     public Cat() {
         super();
         setType("Cat");
     }
+
     public Cat(String id, String name, int age, double price, boolean isIndoor, String furColor) {
         super(id, name, age, price, "Cat");
         this.isIndoor = isIndoor;
         this.furColor = furColor;
     }
-    
+
     @Override
     public void input(Scanner sc) {
         super.input(sc);
@@ -25,18 +29,27 @@ public class Cat extends Pet{
         this.isIndoor = Boolean.parseBoolean(sc.nextLine());
     }
 
-    @Override
-    public void display() {
-        super.display();
-        System.out.println("FurColor: " + this.furColor + " Is Indoor: " + this.isIndoor);
-    }
-
     public String getFurColor() {
         return furColor;
     }
 
-    public boolean isIsIndoor() {
+    public boolean isIndoor() {
         return isIndoor;
     }
-    
+
+    @Override
+    public String toString() {
+
+        return super.toString() + "," + this.furColor + "," + this.isIndoor;
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Meow Meow");
+    }
+
+    @Override
+    public double getDiscountPrice() {
+        return getPrice() * 0.5;
+    }
 }
