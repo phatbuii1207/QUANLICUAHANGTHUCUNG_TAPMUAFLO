@@ -1,33 +1,30 @@
 
 package petmn;
+
 import java.util.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Main {
-      public static void saveToFile(ArrayList<Pet> pets) {
+
+    public static void saveToFile(ArrayList<Pet> pets) {
         try (PrintWriter pw = new PrintWriter("pets.txt")) {
             for (Pet p : pets) {
-                if (p instanceof Dog ) {
-                    Dog d = (Dog) p;
-                    pw.println("Dog," + d.getId() + "," + d.getName() + "," +d.getAge() + "," + d.getPrice() + "," + d.isIsTrained() + "," + d.getBreed());
-                } else if (p instanceof Cat ) {
-                    Cat c = (Cat) p;
-                    pw.println("Cat," + c.getId() + "," + c.getName() + "," +c.getAge() + "," + c.getPrice() + "," +c.isIsIndoor() + "," + c.getFurColor());
-                }
+                pw.println(p.toString());
             }
         } catch (Exception e) {
             System.out.println("Error saving file!");
         }
     }
-        public static void main(String[] args) {
+
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int enter = 0;
         int enter1 = 0;
         ArrayList<Pet> pets = new ArrayList<>();
-        ArrayList<Dog> dogs = new ArrayList<>();
-        ArrayList<Cat> cats = new ArrayList<>();
+
 
         try {
             File file = new File("pets.txt");
@@ -37,28 +34,30 @@ public class Main {
                 while (fSc.hasNextLine()) {
                     String line = fSc.nextLine();
                     if (line.trim().isEmpty()) {
-                        continue; 
+                        continue;
                     }
                     String[] d = line.split(",");
-                    String type = d[0].trim();
-                    String id = d[1].trim();
-                    String name = d[2].trim();
-                    int age = Integer.parseInt(d[3].trim());
-                    double price = Double.parseDouble(d[4].trim());
+                    if (d.length < 7) continue;
+
+                    String id = d[0].trim();
+                    String name = d[1].trim();
+                    int age = Integer.parseInt(d[2].trim());
+                    double price = Double.parseDouble(d[3].trim());
+                    String type = d[4].trim();
                     boolean flag = Boolean.parseBoolean(d[5].trim());
                     String extra = d[6].trim();
+                    
+                    
 
                     if (type.equalsIgnoreCase("Dog")) {
-                        Dog dog = new Dog(id, name, age, price, flag, extra);
-                        pets.add(dog);
-                        dogs.add(dog);
+                       pets.add(new Dog(id,name,age,price,flag,extra));
+                        
                     } else if (type.equalsIgnoreCase("Cat")) {
-                        Cat cat = new Cat(id, name, age, price, flag, extra);
-                        pets.add(cat);
-                        cats.add(cat); 
+                         pets.add(new Cat(id, name, age, price, flag, extra));
+                        
                     }
                 }
-                fSc.close(); 
+                fSc.close();
                 System.out.println("Loaded " + pets.size() + " pets from file.");
             } else {
                 System.out.println("Data file not found. Starting with empty list.");
@@ -95,17 +94,16 @@ public class Main {
                         continue;
                     }
                     if (enter1 == 1) {
-                        Dog newDog = new Dog();
+                        Pet newDog = new Dog();
                         newDog.input(sc);
-                        dogs.add(newDog);
                         pets.add(newDog);
-                        newDog.display();
+                        System.out.println(newDog);
                     } else if (enter1 == 2) {
-                        Cat newCat = new Cat();
+                        Pet newCat = new Cat();
                         newCat.input(sc);
-                        cats.add(newCat);
                         pets.add(newCat);
-                        newCat.display();
+                        System.out.println(newCat); 
+                       
                     } else if (enter1 == 3) {
                         break;
                     } else {
@@ -113,22 +111,24 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println("=== List of Dogs ===");
-                    for (Dog d : dogs) {
-                        d.display();
+                    System.out.println("=== List of Pets ===");
+                    for (Pet pet : pets) {
+
+                        System.out.println(pet);
+                        
+                        pet.makeSound();
+                        
+                        System.out.println("Discount price: "+pet.getDiscountPrice());
                     }
-                    System.out.println("=== List of Cats ===");
-                    for (Cat c : cats) {
-                        c.display();
-                    }
+                   
                     break;
                 case 3:
                     System.out.println("Enter ID to search: ");
-                    String searchId = sc.next();
+                    String searchId= sc.nextLine();
                     boolean found = false;
                     for (Pet p : pets) {
-                        if (p.getId().equalsIgnoreCase(searchId)) {
-                            p.display();
+                        if (p.getId().equalsIgnoreCase(searchId.trim())) {
+                            System.out.println(p);
                             found = true;
                         }
                     }
@@ -145,4 +145,5 @@ public class Main {
             }
         } while (enter != 4);
     }
+
 }
