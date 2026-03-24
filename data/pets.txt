@@ -1,4 +1,4 @@
-D01,Buddy,3,150.0,Dog,true,false
-C01,Mimi,2,120.0,Cat,true,false
-D02,Rocky,5,200.0,Dog,false,false
-C02,Luna,1,100.0,Cat,false,false
+D01,Buddy,3,150.0,Dog,Husky,true
+C01,Mimi,2,120.0,Cat,White,true
+D02,Rocky,5,200.0,Dog,Bulldog,false
+C02,Luna,1,100.0,Cat,Gray,false
